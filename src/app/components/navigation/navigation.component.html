@@ -1,0 +1,40 @@
+<div class="flex justify-between items-center px-8 py-2 bg-slate-500">
+  <span>CV Builder</span>
+
+  <div class="flex gap-4 items-center">
+    <nav class="flex gap-2">
+      <a
+        class=""
+        routerLink="landing-page"
+        routerLinkActive="active-nav-link"
+        ariaCurrentWhenActive="page"
+        >Home</a
+      >
+      <a
+        class=""
+        routerLink="example"
+        routerLinkActive="active-nav-link"
+        ariaCurrentWhenActive="page"
+        >Builder</a
+      >
+    </nav>
+
+    <span>|</span>
+
+    <button
+      *ngIf="selectedTheme === 'light'"
+      class="cursor-pointer h-5 flex justify-center w-5 items-center"
+      (click)="handleClick('dark')"
+    >
+      <fa-icon [icon]="faMoon" />
+    </button>
+
+    <button
+      *ngIf="selectedTheme === 'dark'"
+      class="cursor-pointer w-5 h-5 flex justify-center items-center"
+      (click)="handleClick('light')"
+    >
+      <fa-icon [icon]="faSun" />
+    </button>
+  </div>
+</div>

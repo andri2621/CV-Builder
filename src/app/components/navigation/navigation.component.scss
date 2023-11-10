@@ -1,0 +1,28 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-theme {
+  font-weight: bold; // Add your desired styles here
+}
+
+.wrapper-navigation {
+  display: flex;
+  gap: 12px;
+
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .active-nav-link {
+    font-weight: bolder;
+    color: cyan;
+  }
+}
+
+.button-toggle {
+  min-width: unset;
+}
