@@ -25,7 +25,10 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [
+              "./node_modules/flowbite/dist/flowbite.min.js",
+              "./node_modules/flowbite/dist/datepicker.min.js"
+            ]
           },
           "configurations": {
             "production": {

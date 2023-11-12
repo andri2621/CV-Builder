@@ -1,0 +1,690 @@
+<div class="flex gap-12">
+  <div class="w-1/2">
+    <div class="sticky top-16 z-10 bg-white py-4 dark:bg-gray-900">
+      <ol class="mb-4 flex w-full items-center sm:mb-5">
+        <li
+          *ngFor="let step of steps; let i = index"
+          [ngClass]="[
+            'flex',
+            i !== steps.length - 1 ? 'w-full items-center' : '',
+            'text-primary-600',
+            i !== steps.length - 1
+              ? 'after:inline-block after:h-1 after:w-full after:border-4 after:border-b'
+              : '',
+            i >= currentStepIndex
+              ? 'after:border-gray-300 dark:after:border-gray-600'
+              : 'after:border-primary-300 dark:after:border-primary-600'
+          ]"
+        >
+          <div
+            [ngClass]="[
+              'flex shrink-0 items-center justify-center',
+              'h-10 w-10 lg:h-12 lg:w-12',
+              'rounded-full',
+              i === currentStepIndex ? 'border-2 border-primary-500' : '',
+              i >= currentStepIndex
+                ? 'bg-gray-300 dark:bg-gray-600'
+                : 'bg-primary-300 dark:bg-primary-600'
+            ]"
+          >
+            <fa-icon
+              [icon]="step.icon"
+              [ngClass]="[
+                'fa-lg text-gray-900',
+                i === currentStepIndex ? 'text-primary-500' : ''
+              ]"
+            />
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div>
+      <div
+        class="mb-4 text-2xl font-medium leading-none text-gray-900 dark:text-white"
+      >
+        {{ this.currentStep.label }}
+      </div>
+    </div>
+
+    <!-- PERSONAL FORM -->
+    <div *ngIf="currentStepIndex === 0">
+      <div class="mb-4 grid gap-4 sm:grid-cols-2">
+        <div>
+          <label
+            for="firstName"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >First Name</label
+          >
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            [ngClass]="[
+              'block w-full rounded-lg p-2.5',
+              'border border-gray-300 dark:border-gray-600',
+              'text-sm text-gray-900 dark:text-white',
+              'bg-gray-50 dark:bg-gray-700',
+              'dark:placeholder-gray-400',
+              'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+            ]"
+            placeholder="John"
+            [(ngModel)]="personalData.firstName"
+          />
+        </div>
+        <div>
+          <label
+            for="lastName"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Last Name</label
+          >
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            [ngClass]="[
+              'block w-full rounded-lg p-2.5',
+              'border border-gray-300 dark:border-gray-600',
+              'text-sm text-gray-900 dark:text-white',
+              'bg-gray-50 dark:bg-gray-700',
+              'dark:placeholder-gray-400',
+              'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+            ]"
+            placeholder="Doe"
+            [(ngModel)]="personalData.lastName"
+          />
+        </div>
+      </div>
+      <div class="mb-4">
+        <label
+          for="title"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+          >Title</label
+        >
+        <input
+          type="text"
+          name="title"
+          id="title"
+          [ngClass]="[
+            'block w-full rounded-lg p-2.5',
+            'border border-gray-300 dark:border-gray-600',
+            'text-sm text-gray-900 dark:text-white',
+            'bg-gray-50 dark:bg-gray-700',
+            'dark:placeholder-gray-400',
+            'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+          ]"
+          placeholder="Sales Executive"
+          [(ngModel)]="personalData.title"
+        />
+      </div>
+      <div class="mb-4 grid gap-4 sm:grid-cols-2">
+        <div>
+          <label
+            for="email"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Email</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            [ngClass]="[
+              'block w-full rounded-lg p-2.5',
+              'border border-gray-300 dark:border-gray-600',
+              'text-sm text-gray-900 dark:text-white',
+              'bg-gray-50 dark:bg-gray-700',
+              'dark:placeholder-gray-400',
+              'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+            ]"
+            placeholder="user@email.com"
+            [(ngModel)]="personalData.email"
+          />
+        </div>
+        <div>
+          <label
+            for="phoneNumber"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Phone Number</label
+          >
+          <input
+            type="text"
+            name="phoneNumber"
+            id="phoneNumber"
+            [ngClass]="[
+              'block w-full rounded-lg p-2.5',
+              'border border-gray-300 dark:border-gray-600',
+              'text-sm text-gray-900 dark:text-white',
+              'bg-gray-50 dark:bg-gray-700',
+              'dark:placeholder-gray-400',
+              'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+            ]"
+            placeholder="phone number"
+            [(ngModel)]="personalData.phoneNumber"
+          />
+        </div>
+      </div>
+      <div class="mb-4 grid gap-4 sm:grid-cols-2">
+        <div>
+          <label
+            for="city"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >City</label
+          >
+          <input
+            type="text"
+            name="city"
+            id="city"
+            [ngClass]="[
+              'block w-full rounded-lg p-2.5',
+              'border border-gray-300 dark:border-gray-600',
+              'text-sm text-gray-900 dark:text-white',
+              'bg-gray-50 dark:bg-gray-700',
+              'dark:placeholder-gray-400',
+              'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+            ]"
+            placeholder="City"
+            [(ngModel)]="personalData.city"
+          />
+        </div>
+        <div>
+          <label
+            for="country"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Country</label
+          >
+          <input
+            type="text"
+            name="country"
+            id="country"
+            [ngClass]="[
+              'block w-full rounded-lg p-2.5',
+              'border border-gray-300 dark:border-gray-600',
+              'text-sm text-gray-900 dark:text-white',
+              'bg-gray-50 dark:bg-gray-700',
+              'dark:placeholder-gray-400',
+              'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+            ]"
+            placeholder="Country"
+            [(ngModel)]="personalData.country"
+          />
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="summary"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+          >Summary</label
+        >
+        <div class="my-2 text-sm">
+          Write 2-4 short & energetic sentences to interest the reader! Mention
+          your role, experience & most importantly - your biggest achievements,
+          best qualities and skills.
+        </div>
+        <textarea
+          id="summary"
+          rows="4"
+          [ngClass]="[
+            'block w-full rounded-lg p-2.5',
+            'border border-gray-300 dark:border-gray-600',
+            'text-sm text-gray-900 dark:text-white',
+            'bg-gray-50 dark:bg-gray-700',
+            'dark:placeholder-gray-400',
+            'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+          ]"
+          placeholder="e.g. Passionate science teacher with 5+ years experience and track record of ..."
+          [(ngModel)]="personalData.summary"
+        ></textarea>
+      </div>
+    </div>
+    <!-- END PERSONAL FORM -->
+
+    <!-- EXPERIENCE FORM -->
+    <div *ngIf="currentStepIndex === 1">
+      <div class="mb-4 text-sm">
+        Show your relevant experience (last 10 years). Use bullet points to note
+        your achievements, if possible - use numbers/facts (Achieved X, measured
+        by Y, by doing Z).
+      </div>
+
+      <!-- ACCORDION -->
+      <div
+        id="accordion-collapse"
+        data-accordion="collapse"
+        class="mb-4"
+        *ngFor="let experience of experienceData; let i = index"
+      >
+        <div
+          id="accordion-collapse-heading-{{ i }}"
+          class="group relative flex w-full items-center gap-2"
+        >
+          <button
+            type="button"
+            [ngClass]="[
+              'flex items-center justify-between gap-3',
+              'w-[95%] p-5',
+              'rounded-lg font-medium',
+              'text-gray-700 dark:text-gray-200',
+              'hover:bg-gray-100 dark:hover:bg-gray-800',
+              'border-gray-20 border dark:border-gray-700',
+              'focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800'
+            ]"
+            [id]="'accordion-collapse-button-' + i"
+            [attr.data-accordion-target]="'#accordion-collapse-body-' + i"
+            [attr.aria-expanded]="i === experienceData.length - 1"
+            [attr.aria-controls]="'accordion-collapse-body-' + i"
+            (click)="toggleAccordion(i)"
+          >
+            <div class="flex flex-col items-start">
+              <div>
+                <span>
+                  {{
+                    experience.jobTitle
+                      ? experience.jobTitle
+                      : 'Experience ' + (i + 1)
+                  }}
+                </span>
+                <span>
+                  {{ experience.company ? ' at ' + experience.company : '' }}
+                </span>
+              </div>
+              <span class="text-xs text-gray-500 dark:text-gray-400">
+                <div class="flex">
+                  <div>
+                    {{ experience.startMonth }}
+                  </div>
+                  <div *ngIf="experience.startYear">
+                    , {{ experience.startYear }}
+                  </div>
+                  <div class="mx-[.1rem]">-</div>
+                  <div *ngIf="!currentlyWorking; else present" class="flex">
+                    <div>
+                      {{ experience.endMonth }}
+                    </div>
+                    <div *ngIf="experience.endYear">
+                      , {{ experience.endYear }}
+                    </div>
+                  </div>
+                  <ng-template #present>Present</ng-template>
+                </div>
+              </span>
+            </div>
+
+            <div class="flex gap-4">
+              <fa-icon
+                [icon]="faChevronUp"
+                [ngClass]="[accordionExpandedIndex === i ? '' : 'rotate-180']"
+              />
+            </div>
+          </button>
+          <fa-icon
+            [icon]="faTrash"
+            (click)="deleteExperience(i)"
+            [ngClass]="[
+              'invisible group-hover:visible',
+              'cursor-pointer',
+              'text-gray-500 hover:text-error-500 dark:text-gray-400 hover:dark:text-error-500'
+            ]"
+          />
+        </div>
+        <!-- ACCORDION BODY -->
+        <div
+          id="accordion-collapse-body-{{ i }}"
+          [class.hidden]="accordionExpandedIndex !== i"
+          [attr.aria-labelledby]="'accordion-collapse-heading-' + i"
+        >
+          <div
+            class="w-[95%] border border-t-0 border-gray-200 p-5 dark:border-gray-700 dark:bg-gray-900"
+          >
+            <div class="mb-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  for="jobTitle"
+                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >Job Title</label
+                >
+                <input
+                  type="text"
+                  name="jobTitle"
+                  id="jobTitle"
+                  [ngClass]="[
+                    'block w-full rounded-lg p-2.5',
+                    'border border-gray-300 dark:border-gray-600',
+                    'text-sm text-gray-900 dark:text-white',
+                    'bg-gray-50 dark:bg-gray-700',
+                    'dark:placeholder-gray-400',
+                    'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+                  ]"
+                  placeholder="Job Title"
+                  [(ngModel)]="experience.jobTitle"
+                />
+              </div>
+              <div>
+                <label
+                  for="company"
+                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >Company Name</label
+                >
+                <input
+                  type="text"
+                  name="company"
+                  id="company"
+                  [ngClass]="[
+                    'block w-full rounded-lg p-2.5',
+                    'border border-gray-300 dark:border-gray-600',
+                    'text-sm text-gray-900 dark:text-white',
+                    'bg-gray-50 dark:bg-gray-700',
+                    'dark:placeholder-gray-400',
+                    'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+                  ]"
+                  placeholder="Job Title"
+                  [(ngModel)]="experience.company"
+                />
+              </div>
+            </div>
+            <div class="mb-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  for="city"
+                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >City</label
+                >
+                <input
+                  type="text"
+                  name="city"
+                  id="city"
+                  [ngClass]="[
+                    'block w-full rounded-lg p-2.5',
+                    'border border-gray-300 dark:border-gray-600',
+                    'text-sm text-gray-900 dark:text-white',
+                    'bg-gray-50 dark:bg-gray-700',
+                    'dark:placeholder-gray-400',
+                    'focus:border-primary-600 focus:ring-primary-600  dark:focus:border-primary-500 dark:focus:ring-primary-500'
+                  ]"
+                  placeholder="Job Title"
+                  [(ngModel)]="experience.city"
+                />
+              </div>
+            </div>
+
+            <div class="mb-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  for="startDate"
+                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >Start Date</label
+                >
+                <div class="flex" id="startDate">
+                  <!-- Month Select -->
+                  <select
+                    [ngClass]="[
+                      'block w-full p-2.5',
+                      'rounded-l-lg border border-r-0',
+                      'border-gray-300 focus:border-primary-500 dark:border-gray-600 dark:focus:border-primary-500',
+                      'bg-gray-50 dark:bg-gray-700',
+                      'text-sm text-gray-900 dark:text-white',
+                      'focus:ring-primary-500 dark:focus:ring-primary-500',
+                      'dark:placeholder-gray-400'
+                    ]"
+                    [(ngModel)]="experience.startMonth"
+                    name="month"
+                  >
+                    <ng-container *ngFor="let month of months">
+                      <option [value]="month">
+                        {{ month }}
+                      </option>
+                    </ng-container>
+                  </select>
+                  <!-- Year Select -->
+                  <select
+                    [ngClass]="[
+                      'block w-24 p-2.5',
+                      'rounded-r-lg border border-l-0',
+                      'border-gray-300 focus:border-primary-500 dark:border-gray-600 dark:focus:border-primary-500',
+                      'bg-gray-50 dark:bg-gray-700',
+                      'text-sm text-gray-900 dark:text-white',
+                      'focus:ring-primary-500 dark:focus:ring-primary-500',
+                      'dark:placeholder-gray-400'
+                    ]"
+                    [(ngModel)]="experience.startYear"
+                    name="year"
+                  >
+                    <option *ngFor="let year of getYearRange()" [value]="year">
+                      {{ year }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="endDate"
+                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >End Date</label
+                >
+                <div class="flex" id="endDate">
+                  <!-- Month Select -->
+                  <select
+                    [ngClass]="[
+                      'block w-full p-2.5',
+                      'rounded-l-lg border border-r-0',
+                      'border-gray-300 focus:border-primary-500 dark:border-gray-600 dark:focus:border-primary-500',
+                      'bg-gray-50 dark:bg-gray-700',
+                      'text-sm text-gray-900 dark:text-white',
+                      'focus:ring-primary-500 dark:focus:ring-primary-500',
+                      'dark:placeholder-gray-400'
+                    ]"
+                    [(ngModel)]="experience.endMonth"
+                    name="month"
+                    [disabled]="currentlyWorking"
+                  >
+                    <ng-container *ngFor="let month of months">
+                      <option [value]="month">
+                        {{ month }}
+                      </option>
+                    </ng-container>
+                  </select>
+                  <!-- Year Select -->
+                  <select
+                    [ngClass]="[
+                      'block w-24 p-2.5',
+                      'rounded-r-lg border border-l-0',
+                      'border-gray-300 focus:border-primary-500 dark:border-gray-600 dark:focus:border-primary-500',
+                      'bg-gray-50 dark:bg-gray-700',
+                      'text-sm text-gray-900 dark:text-white',
+                      'focus:ring-primary-500 dark:focus:ring-primary-500',
+                      'dark:placeholder-gray-400'
+                    ]"
+                    [(ngModel)]="experience.endYear"
+                    name="year"
+                    [disabled]="currentlyWorking"
+                  >
+                    <option *ngFor="let year of getYearRange()" [value]="year">
+                      {{ year }}
+                    </option>
+                  </select>
+                </div>
+                <div class="my-2 flex items-center">
+                  <input
+                    [checked]="currentlyWorking"
+                    [(ngModel)]="currentlyWorking"
+                    id="current-work-here"
+                    type="checkbox"
+                    value=""
+                    [ngClass]="[
+                      'h-4 w-4',
+                      'rounded border-gray-300 dark:border-gray-600',
+                      'bg-gray-100 dark:bg-gray-700',
+                      'text-primary-600',
+                      ' focus:ring-2 focus:ring-primary-500',
+                      'dark:ring-offset-gray-800 dark:focus:ring-primary-600'
+                    ]"
+                  />
+                  <label
+                    for="current-work-here"
+                    class="ms-2 text-xs font-medium text-gray-900 dark:text-gray-300"
+                    >Currently work here</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label
+                for="description"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                >Description</label
+              >
+              <div class="my-2 text-sm"></div>
+              <textarea
+                id="description"
+                rows="4"
+                [ngClass]="[
+                  'block w-full rounded-lg p-2.5',
+                  'text-sm text-gray-900 dark:text-white',
+                  'bg-gray-50 dark:bg-gray-700',
+                  'dark:placeholder-gray-400',
+                  'border border-gray-300 dark:border-gray-600',
+                  'focus:border-primary-600 dark:focus:border-primary-500',
+                  'focus:ring-primary-600 dark:focus:ring-primary-500'
+                ]"
+                placeholder="e.g. Created and implemented lesson plans based on child-led interests and curiosities ..."
+                [(ngModel)]="experience.description"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END ACCORDION -->
+
+      <button
+        (click)="addExperience()"
+        class="btn-sm mb-10 flex w-full gap-2 rounded-lg text-primary-500 hover:bg-primary-500/10"
+      >
+        <fa-icon [icon]="faPlus" />
+        Add Experience
+      </button>
+    </div>
+    <!-- END EXPERIENCE FORM -->
+
+    <div class="flex w-full justify-between">
+      <button
+        (click)="handleStep(currentStepIndex - 1)"
+        [disabled]="currentStepIndex === 0"
+        class="btn-primary btn-sm"
+      >
+        Previous
+      </button>
+      <button
+        (click)="handleStep(currentStepIndex + 1)"
+        [disabled]="currentStepIndex === steps.length - 1"
+        class="btn-primary btn-sm"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+
+  <!-- PREVIEW TEMPLATE -->
+  <!-- 'fixed right-20 top-28 ', -->
+  <div
+    class="fixed bottom-0 right-[5vw] top-0 flex w-[35%] items-center justify-end"
+  >
+    <div
+      class="absolute flex items-start justify-end"
+      style="inset: 6rem 0px 0px"
+    >
+      <div class="relative inline-block w-full">
+        <div
+          [ngClass]="[
+            'aspect-[1/1.41] max-h-[75vh]',
+            'flex flex-col items-center',
+            'bg-white px-8 py-6 text-black',
+            'rounded-md border border-gray-400'
+          ]"
+        >
+          <div
+            class="flex gap-1 text-[.5rem] font-bold uppercase leading-tight"
+          >
+            <span>
+              {{
+                personalData.firstName !== '' ? personalData.firstName : 'John'
+              }}
+            </span>
+            <span>
+              {{ personalData.lastName !== '' ? personalData.lastName : 'Doe' }}
+            </span>
+          </div>
+          <div class="text-[.5rem] font-bold leading-tight">
+            {{ personalData.title }}
+          </div>
+
+          <div class="flex gap-[.1rem] text-[.375rem]">
+            <div>
+              {{ personalData.city
+              }}<span
+                *ngIf="personalData.city && personalData.country"
+                class="mr-[.1rem]"
+                >,</span
+              >{{ personalData.country }}
+            </div>
+            <span
+              *ngIf="
+                (personalData.city || personalData.country) &&
+                personalData.phoneNumber
+              "
+              >|</span
+            >
+            <div>{{ personalData.phoneNumber }}</div>
+            <span *ngIf="personalData.phoneNumber && personalData.email"
+              >|</span
+            >
+            <div>{{ personalData.email }}</div>
+          </div>
+
+          <div class="mt-2 w-full self-start">
+            <div class="text-[.5rem] font-bold">SUMMARY</div>
+            <hr class="h-px border-0 bg-gray-200 dark:bg-gray-700" />
+            <div class="mt-1 text-[.375rem] leading-tight">
+              {{ personalData.summary }}
+            </div>
+          </div>
+          <div class="mt-2 w-full self-start">
+            <div class="text-[.5rem] font-bold">EXPERIENCE</div>
+            <hr class="h-px border-0 bg-gray-200 dark:bg-gray-700" />
+            <div
+              *ngFor="let experience of experienceData"
+              class="mt-1 text-[.375rem] leading-tight"
+            >
+              <div class="flex font-bold">
+                <div>
+                  {{ experience.jobTitle }}
+                </div>
+                <div *ngIf="experience.company" class="mx-[.1rem]">at</div>
+                <div>{{ experience.company }}</div>
+                <div *ngIf="experience.city">, {{ experience.city }}</div>
+              </div>
+              <div class="flex">
+                <div>
+                  {{ experience.startMonth }}
+                </div>
+                <div *ngIf="experience.startYear">
+                  , {{ experience.startYear }}
+                </div>
+                <div class="mx-[.1rem]">-</div>
+                <div *ngIf="!currentlyWorking; else present" class="flex">
+                  <div>
+                    {{ experience.endMonth }}
+                  </div>
+                  <div *ngIf="experience.endYear">
+                    , {{ experience.endYear }}
+                  </div>
+                </div>
+                <ng-template #present>Present</ng-template>
+              </div>
+              <p>{{ experience.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END PREVIEW TEMPLATE -->
+</div>

@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { initFlowbite } from 'flowbite';
 import logger from 'src/lib/logger';
 
 @Component({
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    initFlowbite();
     this.currentTheme = localStorage.getItem('activeTheme') || 'light';
     this.renderer.addClass(this.document.documentElement, this.currentTheme);
   }

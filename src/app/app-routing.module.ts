@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExampleComponent } from './views/example/example.component';
-import { NotFoundComponent } from './views/not-found/not-found.component';
+import { BuilderComponent } from './views/builder/builder.component';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
   { path: 'landing-page', component: LandingPageComponent },
-  { path: 'example', component: ExampleComponent },
+  { path: 'builder', component: BuilderComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
