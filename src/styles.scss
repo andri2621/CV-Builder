@@ -1,22 +1,92 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* You can add global styles to this file, and also import other style files */
 
-// =========================================================================
+/* You can add global styles to this file, and also import other style files */
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
 
 body {
-  margin: 0;
-  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  @apply text-gray-500 dark:text-gray-400;
+
+  > * :disabled {
+    cursor: not-allowed;
+  }
 }
 
 .layout {
-  /*? 1200px */
-  max-width: 75rem;
-  @apply mx-auto w-11/12;
+  /*? max-width 1200px */
+  @apply mx-auto w-11/12 max-w-[75rem];
 }
+
+.dark {
+  @apply bg-gray-900 text-gray-400;
+}
+
+//*? BUTTON STYLE */
+.btn-primary {
+  @apply btn-md rounded-lg bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 text-gray-900 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800;
+  &:disabled {
+    @apply bg-gradient-to-r from-primary-200 via-primary-200 to-primary-200 text-gray-600 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-gray-900;
+  }
+}
+
+.btn-secondary {
+  @apply btn-md rounded-lg bg-gradient-to-r from-secondary-200 via-secondary-400 to-secondary-500 text-gray-900 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-secondary-300 dark:focus:ring-secondary-800;
+  &:disabled {
+    @apply bg-gradient-to-r from-secondary-200 via-secondary-200 to-secondary-200 text-gray-600 dark:from-secondary-700 dark:via-secondary-800 dark:to-secondary-900 dark:text-gray-900;
+  }
+}
+
+.btn-error {
+  @apply btn-md rounded-lg bg-gradient-to-r from-error-400 via-error-500 to-error-600 text-gray-900 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-error-300 dark:focus:ring-error-800;
+  &:disabled {
+    @apply bg-gradient-to-r from-error-200 via-error-200 to-error-200 text-gray-600 dark:from-error-700 dark:via-error-800 dark:to-error-900 dark:text-gray-900;
+  }
+}
+
+.btn-xs {
+  @apply px-3 py-1 text-center text-xs font-medium;
+}
+
+.btn-sm {
+  @apply px-3 py-1 text-center text-sm font-medium;
+}
+
+.btn-md {
+  @apply px-5 py-2.5 text-sm font-medium;
+}
+
+.btn-lg {
+  @apply px-5 py-3 text-base font-medium;
+}
+
+.btn-xl {
+  @apply px-6 py-3.5 text-base font-medium;
+}
+
+//*? END BUTTON STYLE */
+
+//*? CUSTOM SCROLL BAR */
+/* For WebKit-based browsers like Google Chrome */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f0f0f0;
+}
+//? END SCROLLBAR*/

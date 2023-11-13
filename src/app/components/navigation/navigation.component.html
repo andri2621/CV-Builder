@@ -1,40 +1,62 @@
-<div class="flex justify-between items-center px-8 py-2 bg-slate-500">
-  <span>CV Builder</span>
-
-  <div class="flex gap-4 items-center">
-    <nav class="flex gap-2">
-      <a
-        class=""
-        routerLink="landing-page"
-        routerLinkActive="active-nav-link"
-        ariaCurrentWhenActive="page"
-        >Home</a
-      >
-      <a
-        class=""
-        routerLink="example"
-        routerLinkActive="active-nav-link"
-        ariaCurrentWhenActive="page"
-        >Builder</a
-      >
-    </nav>
-
-    <span>|</span>
-
-    <button
-      *ngIf="selectedTheme === 'light'"
-      class="cursor-pointer h-5 flex justify-center w-5 items-center"
-      (click)="handleClick('dark')"
+<nav
+  [ngClass]="[
+    'fixed start-0 top-0 z-20 w-full',
+    'border-b border-gray-200 dark:border-gray-600',
+    'bg-white dark:bg-gray-900'
+  ]"
+>
+  <div class="layout">
+    <div
+      [ngClass]="['mx-auto flex flex-wrap items-center justify-between py-4']"
     >
-      <fa-icon [icon]="faMoon" />
-    </button>
+      <a routerLink="landing-page" class="flex items-center space-x-3">
+        <span
+          class="self-center whitespace-nowrap text-2xl font-semibold text-primary-500"
+          >CV-Builder</span
+        >
+      </a>
+      <div class="flex items-center space-x-3">
+        <ng-container *ngFor="let item of menu">
+          <a
+            [ngClass]="[
+              'text-gray-900 dark:text-gray-300',
+              'hover:text-primary-500 dark:hover:text-primary-500'
+            ]"
+            [routerLink]="item.link"
+            routerLinkActive="!text-primary-500 font-medium"
+            ariaCurrentWhenActive="page"
+            >{{ item.label }}</a
+          >
+        </ng-container>
 
-    <button
-      *ngIf="selectedTheme === 'dark'"
-      class="cursor-pointer w-5 h-5 flex justify-center items-center"
-      (click)="handleClick('light')"
-    >
-      <fa-icon [icon]="faSun" />
-    </button>
+        <span>|</span>
+
+        <button
+          *ngIf="selectedTheme === 'light'"
+          [ngClass]="[
+            'flex items-center justify-center',
+            'h-5 w-5 cursor-pointer',
+            'text-gray-900 dark:text-gray-300',
+            'hover:text-primary-500 dark:hover:text-primary-500'
+          ]"
+          (click)="handleClick('dark')"
+        >
+          <fa-icon [icon]="faMoon" />
+        </button>
+
+        <button
+          *ngIf="selectedTheme === 'dark'"
+          [ngClass]="[
+            'flex items-center justify-center',
+            'h-5 w-5 cursor-pointer',
+            'text-gray-900 dark:text-gray-300',
+            'hover:text-primary-500 dark:hover:text-primary-500'
+          ]"
+          (click)="handleClick('light')"
+        >
+          <fa-icon [icon]="faSun" />
+        </button>
+      </div>
+    </div>
   </div>
-</div>
+</nav>

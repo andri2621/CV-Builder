@@ -6,6 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { menuItemsProps } from 'src/types';
 
 @Component({
   selector: 'app-navigation',
@@ -17,7 +18,16 @@ export class NavigationComponent {
   faSun = faSun;
   faMoon = faMoon;
 
-  cobaEmptyVar = '';
+  menu: menuItemsProps[] = [
+    {
+      label: 'Home',
+      link: '/landing-page',
+    },
+    {
+      label: 'Builder',
+      link: '/builder',
+    },
+  ];
 
   @Input()
   selectedTheme = 'light';
